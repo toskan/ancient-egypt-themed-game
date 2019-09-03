@@ -1,0 +1,205 @@
+/*
+Project Name: Card Match Game
+Client: Myself
+Author: Tamar Oskanian
+Developer tamar.oskanian@gmail.com in NYC
+*/
+
+
+/******************************************
+/* SETUP
+/*******************************************/
+
+/* Box Model Hack */
+* {
+   -moz-box-sizing: border-box; /* Firexfox */
+   -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+   box-sizing: border-box; /* IE */
+}
+body {
+     color: darkgray; 
+     font-style:  'PT Sans', sans-serif;
+     margin: 0;
+     background: url(../images/lc-23_3_465_egdp029732_broken_up_pattern.jpg) no-repeat center center fixed;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover; 
+     background-size: cover;
+}
+.play-body {
+     background-color: #bbb;
+}
+header {
+     margin: 0;
+     text-align: center;
+     font-size: 2.250em;
+     letter-spacing: 0.375em;
+     color: rgba(245, 242, 237, 0.8);
+}
+#play-div {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 48vh; 
+}
+#play {
+     font-size: 2.875em;
+     font-weight: 800;
+     text-decoration: none;
+     outline: none;
+     text-align: center;
+     color: rgba(94,107,119, 0.8);
+     background-color:  rgba(225,221,214, 0.4);
+     border-radius: 50%;
+     display: block;
+     height: 175px;
+     width: 175px;
+     line-height: 175px;
+}
+@-webkit-keyframes bounce {
+     from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+     to   { -webkit-transform: translate3d(0, 0.200em, 0); transform: translate3d(0, 10px, 0); }
+}
+@keyframes bounce {
+     from { transform: translate3d(0, 0, 0);     }
+     to   { transform: translate3d(0, 0.200em, 0); }
+}
+#play:hover {
+     font-size: 3.250em;
+     height: 190px;
+     width: 190px;
+     line-height: 190px;
+     -webkit-animation-name: bounce;
+     -webkit-animation-duration: 0.5s;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: cubic-bezier((0.7, 0.7, 0.7, 0.7));
+     -webkit-animation-iteration-count: infinite;
+     animation: bounce 0.5s cubic-bezier(0.7, 0.7, 0.7, 0.7);
+     animation-direction: alternate;
+     animation-iteration-count: infinite;
+} 
+.container {
+     height: 100vh;
+     background: url(../images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg) no-repeat center center fixed;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover; 
+     background-size: cover;
+}
+#row1, #row2, #row3 {
+     width: 98%;
+     display: flex;
+     flex-direction: row; 
+     justify-content: space-around;
+     height: 30vh;
+     padding: 3%;
+}
+/* Div that contains all the elements of the card.*/
+.flip-card {
+background-color: transparent;
+width: 130px;
+height: 182px;
+-webkit-perspective: 700px;
+perspective: 700px; 
+outline: none;
+}
+.flip-card-bottom > img {
+     width: 130px;
+     height: 182px;
+  /* ratio is 7 / 5 */
+}
+/* This div positions the top and bottom */
+.flip-card-inner {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     -webkit-transform-style: preserve-3d;  
+     transform-style: preserve-3d;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+     /* transform-style preserve 3d messes up in microsoft edge */
+}
+/* Position of top and bottom */
+.flip-card-top, .flip-card-bottom {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+}
+.flip-card-top {
+     background: url(../images/ceiling_patterns_DT218367_crop4.jpg) no-repeat;
+     background-size: cover;
+     background-position: center;
+     opacity: 0.9;
+     background-color: black;
+     transform: rotateX(0);
+     -webkit-transform: rotateX(0);
+     -ms-transform: rotateY(0);
+     -moz-transform: rotateY(0); 
+}
+/* if doesn't work try adding .flip-card-inner-transform new class to add this css to the flipcard when toggled */
+.flip-card-bottom {
+     background-color: white;
+     transform: rotateY(180deg);
+     -webkit-transform: rotateY(180deg);
+     -ms-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg); 
+}
+.flip {
+     transform: rotateY(180deg);
+     -webkit-transform: rotateY(180deg);
+     -ms-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg); 
+     transition: 2s ease-in;
+}
+.container, .loader-container {
+     display: none;
+}
+.loader-container {
+     position: absolute;
+     left: 42%;
+     top: 30%;
+     z-index: 10;
+}
+.loader {
+     border: 16px solid  rgba(225,221,214, 0.2);
+     border-radius: 50%;
+     border-top: 16px solid  rgba(225,221,214, 0.4);
+     width: 190px;
+     height: 190px;
+     -webkit-animation: spin 2s linear infinite; /* Safari */
+     animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+     0% { -webkit-transform: rotate(0deg); }
+     100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+     0% { transform: rotate(0deg); }
+     100% { transform: rotate(360deg); }
+}
+
+/* tablets */
+@media screen and (max-width: 768px) {
+
+     #flip-card-4, #flip-card-5, #flip-card-10, #flip-card-11, #flip-card-16, #flip-card-17 {
+     display: none;
+     }
+     .flip-card, .flip-card-bottom > img {
+     width: 85px;
+     height: 119px;
+     }
+}
+
+@media screen and (max-width: 375px) {
+
+     #flip-card-4, #flip-card-5, #flip-card-10, #flip-card-11, #flip-card-16, #flip-card-17 {
+     display: none;
+     }
+     .flip-card, .flip-card-bottom > img {
+     width: 60px;
+     height: 84px;
+     }
+}
