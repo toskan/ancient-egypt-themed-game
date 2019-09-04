@@ -172,14 +172,22 @@ function onReady () {
      $(function() {
           let imgDivs = $('.flip-card-inner')
           imgDivs.on('click', function () {
-               if (!$(this).hasClass('flip')) {
-               $(this).addClass('flip');     
-               }
-               else {
-                    $(this).removeClass('flip'); 
-               }
+              $(this).toggleClass('flip');
           });
      });
+
+
+     // $(function() {
+     //      let imgDivs = $('.flip-card-inner')
+     //      imgDivs.on('click', function () {
+     //           if (!$(this).hasClass('flip')) {
+     //           $(this).addClass('flip');     
+     //           }
+     //           else {
+     //                $(this).removeClass('flip'); 
+     //           }
+     //      });
+     // });
 
      if (/Edge/.test(navigator.userAgent)) {
      $('.flip-card-bottom').css('backface-visibility', 'hidden');

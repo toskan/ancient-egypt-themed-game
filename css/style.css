@@ -97,17 +97,18 @@ header {
 }
 /* Div that contains all the elements of the card.*/
 .flip-card {
-background-color: transparent;
-width: 130px;
-height: 182px;
--webkit-perspective: 700px;
-perspective: 700px; 
-outline: none;
+     background-color: transparent;
+     width: 130px;
+     height: 182px;
+     -webkit-perspective: 700px;
+     perspective: 700px; 
+     outline: none;
+    /* this also has transition added in some examples  */
 }
 .flip-card-bottom > img {
      width: 130px;
      height: 182px;
-  /* ratio is 7 / 5 */
+     /* ratio is 7 / 5 */
 }
 /* This div positions the top and bottom */
 .flip-card-inner {
@@ -116,14 +117,23 @@ outline: none;
      height: 100%;
      -webkit-transform-style: preserve-3d;  
      transform-style: preserve-3d;
-     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+     transition: 1.25s ease-in;
+     -webkit-transition: 1.25s ease-in;
+     -moz-transition: 1.25s ease-in;
+     -ms-transition: 1.25s ease-in;
+     -o-transition: 1.25s ease-in;
      /* transform-style preserve 3d messes up in microsoft edge */
 }
 /* Position of top and bottom */
 .flip-card-top, .flip-card-bottom {
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);  
      position: absolute;
      width: 100%;
      height: 100%;
+     -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+     -o-backface-visibility: hidden;
+     backface-visibility: hidden;
 }
 .flip-card-top {
      background: url(../images/ceiling_patterns_DT218367_crop4.jpg) no-repeat;
@@ -131,25 +141,20 @@ outline: none;
      background-position: center;
      opacity: 0.9;
      background-color: black;
-     transform: rotateX(0);
-     -webkit-transform: rotateX(0);
-     -ms-transform: rotateY(0);
-     -moz-transform: rotateY(0); 
 }
-/* if doesn't work try adding .flip-card-inner-transform new class to add this css to the flipcard when toggled */
-.flip-card-bottom {
-     background-color: white;
-     transform: rotateY(180deg);
-     -webkit-transform: rotateY(180deg);
-     -ms-transform: rotateY(180deg);
-     -moz-transform: rotateY(180deg); 
-}
+     .flip-card-bottom {
+     transform: rotateY( -180deg );
+     -webkit-transform: rotateY( -180deg );
+     -moz-transform: rotateY( -180deg );
+     -o-transform: rotateY( -180deg );
+     background-color: transparent;
+     } 
 .flip {
      transform: rotateY(180deg);
      -webkit-transform: rotateY(180deg);
      -ms-transform: rotateY(180deg);
      -moz-transform: rotateY(180deg); 
-     transition: 2s ease-in;
+     -o-transform: rotateY( 180deg );
 }
 .container, .loader-container {
      display: none;
