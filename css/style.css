@@ -137,6 +137,7 @@ header {
      background-position: center;
      opacity: 0.9;
      background-color: black;
+     -webkit-backface-visibility: hidden;
      -moz-backface-visibility: hidden;
      -o-backface-visibility: hidden;
      backface-visibility: hidden;
@@ -147,6 +148,7 @@ header {
      -moz-transform: rotateY( -180deg );
      -o-transform: rotateY( -180deg );
      background-color: transparent;
+     -webkit-backface-visibility: hidden; 
      -moz-backface-visibility: hidden;
      -o-backface-visibility: hidden;
      backface-visibility: hidden; 
