@@ -1,24 +1,24 @@
 function onReady () {
-
+     console.log(document.readyState)
      const images = [
-          '../images/img1_DP243443.jpg', 
-          '../images/img2_DP240268.jpg', 
-          '../images/img3_DP245119.jpg', 
-          '../images/img4_DP245144.jpg', 
-          '../images/img5_26.7.1416_01.jpg', 
-          '../images/img6_DP-17700-001.jpg', 
-          '../images/img7_O.C.380_EGDP016765.jpg', 
-          '../images/img8_20.2.1.jpeg',
-          '../images/img9_DP-14816-003.jpg', 
-          '../images/img1_DP243443.jpg', 
-          '../images/img2_DP240268.jpg', 
-          '../images/img3_DP245119.jpg', 
-          '../images/img4_DP245144.jpg', 
-          '../images/img5_26.7.1416_01.jpg', 
-          '../images/img6_DP-17700-001.jpg', 
-          '../images/img7_O.C.380_EGDP016765.jpg', 
-          '../images/img8_20.2.1.jpeg', 
-          '../images/img9_DP-14816-003.jpg'
+          './images/img1_DP243443.jpg', 
+          './images/img2_DP240268.jpg', 
+          './images/img3_DP245119.jpg', 
+          './images/img4_DP245144.jpg', 
+          './images/img5_26.7.1416_01.jpg', 
+          './images/img6_DP-17700-001.jpg', 
+          './images/img7_O.C.380_EGDP016765.jpg', 
+          './images/img8_20.2.1.jpeg',
+          './images/img9_DP-14816-003.jpg', 
+          './images/img1_DP243443.jpg', 
+          './images/img2_DP240268.jpg', 
+          './images/img3_DP245119.jpg', 
+          './images/img4_DP245144.jpg', 
+          './images/img5_26.7.1416_01.jpg', 
+          './images/img6_DP-17700-001.jpg', 
+          './images/img7_O.C.380_EGDP016765.jpg', 
+          './images/img8_20.2.1.jpeg', 
+          './images/img9_DP-14816-003.jpg'
      ]
      console.log(images)
 
@@ -48,10 +48,7 @@ function onReady () {
      }
      console.log(imageArray)
      console.log(imagesContainer)
-     // for (let i = 0; i < imagesContainer.length; i++) {
-     //      $(imagesContainer[i]).attr('src', imageArray[i]);
-     //      console.log(imagesContainer[i]);
-     // }
+    
      let cards = [
           {
           cardContainer: $('#flip-card-0'),
@@ -194,16 +191,22 @@ function onReady () {
      });
 
      $('#play').click(startPlay);
-     function startPlay() {
-     $('#header-play-div').hide();
-     $('.container').show();
-     $('body').css('background-image', 'none'); 
-     for (let i = 0; i < imagesContainer.length; i++) {
-          $(imagesContainer[i]).attr('src', imageArray[i]);
-          console.log(imagesContainer[i]);
+     function startPlay() { 
+     if (document.readyState === "complete") { 
+          $('#header-play-div').hide();
+          $('.container').show();
+          $('body').css('background-image', 'none'); 
+          for (let i = 0; i < imagesContainer.length; i++) {
+               $(imagesContainer[i]).attr('src', imageArray[i]);
+               console.log(imagesContainer[i]);
+          }
      }
+     else {
+               $('.container, .loader-container').show();
+               $('#header-play-div, #row1, #row2, #row3').hide(); 
+          }
      }
-
+     
      $(function() {
           let imgDivs = $('.flip-card-inner')
           imgDivs.on('click', function () {
@@ -221,8 +224,8 @@ function onReady () {
      //                $(this).removeClass('flip'); 
      //           }
      //      });
-     // });
-
+     // });     
+     
      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
      if (isChrome) {
           $('.flip-card-bottom, .flip-card-top').css({'backface-visibility': 'visible', ' -webkit-backface-visibility': 'visible'});
