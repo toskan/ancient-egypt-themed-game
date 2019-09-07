@@ -201,7 +201,7 @@ function onReady () {
                console.log(imagesContainer[i]);
           }
      }
-     else {
+     if (document.readyState !== "complete") {
                $('.container, .loader-container').show();
                $('#header-play-div, #row1, #row2, #row3').hide(); 
           }
