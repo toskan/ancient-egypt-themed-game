@@ -77,11 +77,12 @@ function onReady () {
      }
 
      let storedEventData = [];
+
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
                // alert("First image" + $(this).index() + "has data: " + event.data.x);
                storedEventData.push(event.data.x);
-               alert(imageArray[storedEventData[0]])
+               // alert(imageArray[storedEventData[0]])
                $(this).one("click");
                $( '.flip-card-inner' ).off();
                $(this).toggleClass('flip', true).promise().then(function() {
