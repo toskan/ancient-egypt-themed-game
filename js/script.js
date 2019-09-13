@@ -88,13 +88,13 @@ function onReady () {
                storedEventData.push(event.data.x);
                $(this).toggleClass('flip', true);
                alert('First Card' + x);
-               $(innerCard[storedEventData[x]]).off(event);
+               // $(innerCard[storedEventData[x]]).off(event);
                x++;
-          if (x >= 2) {
-               $(this).off(event);
-               alert($(this));
+          // if (x >= 2) {
+               // $(this).off(event);
+               // alert($(this));
                compareImages();
-               }
+               // }
           });
      });
 
@@ -105,7 +105,7 @@ function onReady () {
                     $(innerCard[storedEventData[0]]).off(event);
                     $(innerCard[storedEventData[1]]).off(event);
                     storedEventData = []
-                    x = 0
+                    // x = 0
                }
                else {
                     $(innerCard[storedEventData[0]]).toggleClass('flip', false);
