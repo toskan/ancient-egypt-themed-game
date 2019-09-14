@@ -22,34 +22,24 @@ Promise.all(urls.map(url =>
           //this returns the info so it can be worked with
           return response.json();
      }
-     let elevenImages = []
-     let objectMedium = []
-     let objectDate = []
-     let objectName = []
-     let objectPeriod = []
-     let objectURL = []
+     
+     let elevenImages = [];
+     let objectName = [];
+     let objectDate = [];
+     let objectMedium = [];
+     let objectURL = [];
      function useData (jsonData) {
-          // console.log(jsonData);
-          console.log(jsonData.primaryImageSmall);
-          // console.log(jsonData.medium);
-          // console.log(jsonData.objectDate);
-          // console.log(jsonData.objectName);
-          // console.log(jsonData.period);
-          // console.log(jsonData.objectURL);
-          // for (let i = 0; i < 11; i++) {
-               $('img').attr('src', jsonData.primaryImageSmall);
-               objectMedium = jsonData.medium;
-               objectDate = jsonData.objectDate;
-               objectName = jsonData.objectName;
-               objectPeriod = jsonData.period;
-               objectURL = jsonData.objectURL; 
-          // }
+          console.log(jsonData)
+          elevenImages[elevenImages.length] = jsonData.primaryImageSmall;
+          objectName[objectName.length] = jsonData.objectName;
+          objectMedium[objectMedium.length] = jsonData.medium;
+          objectDate[objectDate.length] = jsonData.objectDate;
+          objectURL[objectURL.length] = jsonData.objectURL;
           console.log(elevenImages);
-          // console.log(objectMedium);
-          // console.log(jsonData.objectDate);
-          // console.log(objectName);
-          // console.log(objectPeriod);
-          // console.log(objectURL); 
+          console.log(objectName);
+          console.log(objectDate);
+          console.log(objectMedium);
+          console.log(objectURL); 
      }
 
      function addToSearch(dataItems) {
@@ -61,6 +51,3 @@ Promise.all(urls.map(url =>
      function applyData(dataJson) {
           console.log(dataJson);
      }
-     
-
-// fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/551302")
