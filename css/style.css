@@ -95,6 +95,12 @@ header {
      height: 30vh;
      padding: 3%;
 }
+#row2 {
+     margin-top: 20px;
+}
+#row3 {
+     margin-top: 30px;
+}
 /* Div that contains all the elements of the card.*/
 .flip-card {
      background-color: transparent;

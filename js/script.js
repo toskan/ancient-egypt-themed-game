@@ -77,89 +77,35 @@ function onReady () {
      }
 
      let storedEventData = []
-     // let firstChoice = $(innerCard[storedEventData[x]]);
-     // let secondChoice = $(innerCard[storedEventData[1]]);
-     // let onEvent1 = firstChoice.off(event);
-     // let onEvent2 = secondChoice.off(event);
      let x = 0;
 
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
                storedEventData.push(event.data.x);
                $(this).toggleClass('flip', true);
-               alert('First Card' + x);
-               // $(innerCard[storedEventData[x]]).off(event);
+               // $(innerCard[storedEventData[0]]).off(event);
                x++;
-          // if (x >= 2) {
-               // $(this).off(event);
-               // alert($(this));
+          if (x >= 2) {
                compareImages();
-               // }
+               }
           });
      });
-
+     
      function compareImages() {
-     setTimeout(function() {
+          setTimeout(function() {
                if (imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])) {
-                    // alert ((imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])))
-                    $(innerCard[storedEventData[0]]).off(event);
-                    $(innerCard[storedEventData[1]]).off(event);
-                    storedEventData = []
-                    // x = 0
+                    x = 0;
+                    storedEventData = [];
                }
                else {
                     $(innerCard[storedEventData[0]]).toggleClass('flip', false);
                     $(innerCard[storedEventData[1]]).toggleClass('flip', false);
-                    alert ((imageArray[storedEventData[0]] === (imageArray[storedEventData[1]]))); 
-                    x = 0
-                    storedEventData = [] 
+                    storedEventData = [];
+                    x = 0;
                }    
           }, 2500);  
      }    
      
-          
-
-     // $('.flip-card-inner').each(function(j){
-     //      $(this).on("click", {x:j}, function(event) {
-     //           // alert("First image" + $(this).index() + "has data: " + event.data.x);
-     //           storedEventData.push(event.data.x);
-     //           // alert(imageArray[storedEventData[0]])
-     //           $(this).one("click");
-     //           $( '.flip-card-inner' ).off();
-     //           $(this).toggleClass('flip', true).promise().then(function() {
-     //                $('.flip-card-inner').each(function(j){
-     //                     $(innerCard[storedEventData[0]]).unbind('click')
-     //                          $(this).on("click", {x:j}, function(event) {
-     //                               // alert("The " + $(this).index() + "second image has data: " + event.data.x);
-     //                               storedEventData.push(event.data.x);
-     //                               $(this).one("click");
-     //                               $( '.flip-card-inner' ).off();
-     //                               $(this).toggleClass('flip', true)
-     //                                    setTimeout(function() {
-     //                                         function compareImages() {
-     //                                              if (imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])) {
-     //                                                   // alert ((imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])))
-     //                                                   storedEventData = []
-     //                                                   i++
-     //                                                   $(innerCard[storedEventData[0]]).unbind('click');
-     //                                                   $(innerCard[storedEventData[1]]).unbind('click');
-     //                                              }
-     //                                              else {
-     //                                                   $(innerCard[storedEventData[0]]).toggleClass('flip', false);
-     //                                                   $(innerCard[storedEventData[1]]).toggleClass('flip', false);
-     //                                                   // alert(innerCard[storedEventData[0]])
-     //                                                   // alert(innerCard[storedEventData[1]])
-     //                                                   storedEventData = []
-     //                                              }      
-     //                                    }    
-     //                                         compareImages();
-     //                                    }, 2500);
-     //                          });
-     //                });
-     //           });
-     //      });
-     // });
-
      console.log(storedEventData)
      
      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);

@@ -2,17 +2,15 @@
 
 let imageObjectIDS = [551302, 570708, 544864, 546748, 546745, 544222, 543870, 547803, 551502, 549070, 548580]
 
-let urls = ["https://collectionapi.metmuseum.org/public/collection/v1/objects/551302",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/570708",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/544864",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/546748",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/546745",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/544222",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/543870",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/547803",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/551502",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/549070",
-"https://collectionapi.metmuseum.org/public/collection/v1/objects/548580"]
+let apiURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
+
+let urls = [];
+
+
+imageObjectIDS.forEach(function(i, j){
+     urls[j] = apiURL + i;
+});
+console.log(urls)
 
 Promise.all(urls.map(url =>
      fetch(url)
