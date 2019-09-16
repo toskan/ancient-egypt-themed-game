@@ -71,11 +71,11 @@ header {
      width: 190px;
      line-height: 190px;
      -webkit-animation-name: bounce;
-     -webkit-animation-duration: 0.5s;
+     -webkit-animation-duration: 1s;
      -webkit-animation-direction: alternate;
      -webkit-animation-timing-function: cubic-bezier((0.7, 0.7, 0.7, 0.7));
      -webkit-animation-iteration-count: infinite;
-     animation: bounce 0.5s cubic-bezier(0.7, 0.7, 0.7, 0.7);
+     animation: bounce 1s cubic-bezier(0.7, 0.7, 0.7, 0.7);
      animation-direction: alternate;
      animation-iteration-count: infinite;
 } 
@@ -95,11 +95,14 @@ header {
      height: 30vh;
      padding: 3%;
 }
+#row1{
+     margin-top: 25px;
+}
 #row2 {
-     margin-top: 20px;
+     margin-top: 10px;
 }
 #row3 {
-     margin-top: 30px;
+     margin-top: 15px;
 }
 /* Div that contains all the elements of the card.*/
 .flip-card {
@@ -197,19 +200,33 @@ header {
 }
 
 /* tablets */
-@media screen and (max-width: 768px) {
-
-     #flip-card-4, #flip-card-5, #flip-card-10, #flip-card-11, #flip-card-16, #flip-card-17 {
-     display: none;
-     }
+@media screen and (max-width: 768px)  and (orientation: portrait) {
      .flip-card, .flip-card-bottom > img {
-     width: 85px;
-     height: 119px;
+     width: 102.5px;
+     height: 143.5px;
+     }
+}
+@media screen and (max-width: 1024px)  and (orientation: landscape) {
+     .flip-card, .flip-card-bottom > img {
+          width: 102.5px;
+          height: 143.5px;
      }
 }
 
-@media screen and (max-width: 375px) {
-
+@media screen and (max-width: 414px)  and (orientation: portrait) {
+     header {
+          letter-spacing: 0.1em;
+     }
+     #play {
+          height: 140px;
+          width: 140px;
+          line-height: 140px;
+     }
+     #play:hover {
+          height: 145px;
+          width: 145px;
+          line-height: 145px;
+     } 
      #flip-card-4, #flip-card-5, #flip-card-10, #flip-card-11, #flip-card-16, #flip-card-17 {
      display: none;
      }
@@ -218,3 +235,38 @@ header {
      height: 84px;
      }
 }
+
+@media screen and (max-width: 823px)  and (orientation: landscape) {
+     header {
+          letter-spacing: 0.2em;
+     }
+     #play {
+          height: 120px;
+          width: 120px;
+          line-height: 120px;
+     }
+     #play:hover {
+          height: 125px;
+          width: 125px;
+          line-height: 125px;
+     } 
+     #flip-card-4, #flip-card-5, #flip-card-10, #flip-card-11, #flip-card-16, #flip-card-17 {
+          display: none;
+          }
+     .flip-card, .flip-card-bottom > img {
+     width: 70px;
+     height: 98px;
+     }
+     #row1{
+          margin-top: 0px;
+     }
+     #row2 {
+          margin-top: 5px;
+     }
+     #row3 {
+          margin-top: 5px;
+     }
+}
+
+/* @media (min-width: 30em) and (orientation: landscape) { ... } */
+/* @media (min-height: 680px), screen and (orientation: portrait) { ... } */
