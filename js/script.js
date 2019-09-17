@@ -62,19 +62,18 @@ function onReady () {
 
      $('#play').click(startPlay);
      function startPlay() { 
-     if (document.readyState === "complete") { 
-          $('#header-play-div').hide();
-          $('.container').show();
-          $('body').css('background-image', 'none'); 
-          for (let i = 0; i < imagesContainer.length; i++) {
-               $(imagesContainer[i]).attr('src', imageArray[i]);
-               console.log(imagesContainer[i]);
+          if (document.readyState === "complete") { 
+               $('#header-play-div').hide();
+               $('.container').show();
+               $('body').css('background-image', 'none'); 
+               for (let i = 0; i < imagesContainer.length; i++) {
+                    $(imagesContainer[i]).attr('src', imageArray[i]);
+               }
           }
-     }
-     if (document.readyState !== "complete") {
-               $('.container, .loader-container').show();
-               $('#header-play-div, #row1, #row2, #row3').hide(); 
-          }
+          if (document.readyState !== "complete") {
+                    $('.container, .loader-container').show();
+                    $('#header-play-div, #row1, #row2, #row3').hide(); 
+               }
      }
 
      let storedEventData = []
@@ -96,11 +95,13 @@ function onReady () {
           setTimeout(function() {
                if (imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])) {
                     x = 0;
+                    $(innerCard[storedEventData[0]]).addClass('bounce-win');
+                    $(innerCard[storedEventData[1]]).addClass('bounce-win');
                     storedEventData = [];
                     matches++
                     alert(matches)
-                    if (matches === 1) {
-                         $('#modal-slides').css("display", "block");
+                    if (matches === 9) {
+                         $('#win-restart').css("display", "block");
                     }  
                }
                else {
@@ -114,9 +115,28 @@ function onReady () {
      
      console.log(storedEventData)
 
-     $('.button-display-topright').click(closeModal);
+     $('.button-win-restart-topright').click(closeModal);
      function closeModal() {
+          $('#win-restart').css("display", "none");
+          location.reload();
+     }
+
+     $('#play-again').click(playAgain);
+     function playAgain() {
+          $('#win-restart').css("display", "none");
+          location.reload();
+     }
+
+     $('#art-info').click(artInfo);
+     function artInfo() {
+          $('#win-restart').css("display", "none");
+          $('#modal-slides').css("display", "block");
+     }
+
+     $('.button-display-topright').click(closeArtModal);
+     function closeArtModal() {
           $('#modal-slides').css("display", "none");
+          location.reload();
      }
 
      let imageObjectIDS = [551302, 546748, 544222, 543870, 547803, 551502, 549070, 548580, 544864, 570708, 546745]
@@ -143,6 +163,7 @@ Promise.all(urls.map(url =>
      }
      let elevenImages = [];
      let objectName = [];
+     let objectCountry = []
      let objectDate = [];
      let objectMedium = [];
      let objectURL = [];
@@ -150,15 +171,14 @@ Promise.all(urls.map(url =>
           console.log(jsonData)
           elevenImages[elevenImages.length] = jsonData.primaryImageSmall;
           objectName[objectName.length] = jsonData.objectName;
+          objectCountry[objectCountry.length] = jsonData.country;
           objectMedium[objectMedium.length] = jsonData.medium;
           objectDate[objectDate.length] = jsonData.objectDate;
           objectURL[objectURL.length] = jsonData.objectURL;
-          $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '<h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count]  + '>More info at the Metropolitan Museum</a></li></ul></div>');
+          $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '<h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-country">' + objectCountry[count] + '</h3><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count]  + '>More info at the Metropolitan Museum</a></li></ul></div>');
           count++;
+          $('.met-link-a').attr('target', '_blank');
      }
-
-     // target="_blank" 
-     $('.met-link-a').attr('target', '_blank');
 
      function addToSearch(dataItems) {
           fetch(dataItems)

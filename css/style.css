@@ -169,6 +169,24 @@ header {
      -moz-transform: rotateY(180deg); 
      -o-transform: rotateY( 180deg );
 }
+@-webkit-keyframes bounce-win {
+     from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+     to   { -webkit-transform: translate3d(0, 1.000em, 0); transform: translate3d(0, 3000px, 0); }
+}
+@keyframes bounce-win {
+     from { transform: translate3d(0, 0, 0);     }
+     to   { transform: translate3d(0, 1.000em, 0); }
+}
+.bounce-win {
+     -webkit-animation-name: bounce-win;
+     -webkit-animation-duration: .05s;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: cubic-bezier((0.5, 0.5, 0.5, 0.5));
+     -webkit-animation-iteration-count: 10;
+     animation: bounce .05s cubic-bezier(0.5, 0.5, 0.5, 0.5);
+     animation-direction: alternate;
+     animation-iteration-count: 10;
+}
 .container, .loader-container {
      display: none;
 }
@@ -187,12 +205,63 @@ header {
      -webkit-animation: spin 2s linear infinite; /* Safari */
      animation: spin 2s linear infinite;
 }
+#win-restart {
+     display: none;
+}
+.win-restart-modal {
+     z-index: 3;
+     padding-top: 150px;
+     position: fixed;
+     left: 0;
+     top: 0;
+     width:100%;
+     height:100%;
+     overflow: auto;
+     background-color: rgba(94,107,119, 0.2); 
+}
+.win-restart-content {
+     margin: auto;
+     background-color: lightgrey;
+     position: relative;
+     padding: 10px;
+     outline: 0;
+     width: 350px;
+     color: black;
+}
+.button-win-restart-topright {
+     position: absolute;
+     left: 0;
+     top: 0;
+     font-size: 1.800em;
+     margin-left: 5px;
+}
+#h2-win {
+     margin-left: 35px;
+}
+#win-list {
+     list-style: none;
+}
+.win-li {
+     display: inline-block;
+     padding: 15px;
+}
+#win-li-border {
+     border-left: 1px solid black;
+}
+.win-a {
+     text-decoration: none;
+     outline: none;
+     color: black;
+}
+.win-a:hover {
+     color: darkgrey;
+}
 #modal-slides {
      display: none;
 }
-.modal{
+.modal {
      z-index: 3;
-     padding-top: 130px;
+     padding-top: 45px;
      position: fixed;
      left: 0;
      top: 0;
@@ -210,7 +279,7 @@ header {
      width: 650px;
      color: black;
 }
-.button-display-topright{
+.button-display-topright {
      position: absolute;
      left: 0;
      top: 0;
@@ -218,15 +287,12 @@ header {
      margin-left: 8px;
 }
 .slides-div {
-     padding: 20px 0 0 20px;
+     padding: 20px 0 0 15px;
 }
 .met-link-ul {
      list-style: none;
      margin-left: -40px;
 }
-/* .met-link-li {
-     font-style:  'PT Sans', sans-serif;
-} */
 .met-link-a {
      text-decoration: none;
      outline: none;
@@ -235,6 +301,19 @@ header {
 .met-link-a:hover {
      color: darkgrey;
 }
+     /* .display-left {
+          position: absolute;
+          top: 50%;
+          left: 0%;
+          transform: translate(0%,-50%);
+          -ms-transform:translate(-0%,-50%)
+     }
+     .display-right {
+          position: absolute;
+          top: 50%;
+          right: 0%;
+          transform: translate(0%,-50%);
+          -ms-transform: translate(0%,-50%)} */
 
 /* Safari */
 @-webkit-keyframes spin {
@@ -253,11 +332,61 @@ header {
      width: 102.5px;
      height: 143.5px;
      }
+     .win-restart-modal {
+          padding-top: 130px; 
+     }
+     .win-restart-content {
+          padding: 35px;
+          width: 50%;
+     }
+     #h2-win {
+          margin-left: 40px;
+          font-size: 1.500em;
+     }
+     .win-li {
+          padding: 10px;
+          font-size: 1.250em;
+     }
 }
 @media screen and (max-width: 1024px)  and (orientation: landscape) {
      .flip-card, .flip-card-bottom > img {
           width: 102.5px;
           height: 143.5px;
+     }
+     .win-restart-content {
+          padding: 30px;
+          width: 40%;
+     }
+     #h2-win {
+          margin-left: 40px;
+          font-size: 1.500em;
+     }
+     .win-li {
+          padding: 10px;
+          font-size: 1.250em;
+     }
+     .modal {
+          padding-top: 10px;
+     }
+     .modal-content {
+          padding: 15px;
+          width: 50%;
+     }
+     .eleven-images {
+          width: auto;
+          height: 350px;
+     }
+     .button-display-topright {
+          margin-left: 5px;
+     }
+     .slides-div {
+          padding: 10px 0 0 4px;
+     }
+     .slides-div > h2 {
+          font-size: 1.250em;
+     }
+     .slides-div > h3 {
+          font-size: 1.000em;
      }
 }
 
@@ -281,6 +410,44 @@ header {
      .flip-card, .flip-card-bottom > img {
      width: 60px;
      height: 84px;
+     }
+     .win-restart-modal {
+          padding-top: 90px; 
+     }
+     .win-restart-content {
+          padding: 12px;
+          width: 90%;
+     }
+     #h2-win {
+          margin-left: 40px;
+          font-size: 1.250em;
+     }
+     .win-li {
+          padding: 10px;
+          font-size: 1.000em;
+     }
+     .modal {
+          padding-top: 10px;
+     }
+     .modal-content {
+          padding: 25px;
+          width: 95%;
+     }
+     .eleven-images {
+          width: 90%;
+          height: auto;
+     }
+     .button-display-topright {
+          margin-left: 5px;
+     }
+     .slides-div {
+          padding: 5px 0 0 4px;
+     }
+     .slides-div > h2 {
+          font-size: 1.250em;
+     }
+     .slides-div > h3 {
+          font-size: 1.000em;
      }
 }
 
@@ -314,7 +481,39 @@ header {
      #row3 {
           margin-top: 5px;
      }
+     .win-restart-modal {
+          padding-top: 60px; 
+     }
+     .win-restart-content {
+          padding: 10px;
+          width: 50%;
+     }
+     #h2-win {
+          margin-left: 50px;
+          font-size: 1.250em;
+     }
+     .modal {
+          padding-top: 10px;
+     }
+     .modal-content {
+          padding: 15px;
+          width: 75%;
+     }
+     .eleven-images {
+          width: auto;
+          height: 280px;
+     }
+     .button-display-topright {
+          margin-left: 5px;
+     }
+     .slides-div {
+          padding: 5px 0 0 4px;
+     }
+     .slides-div > h2 {
+          font-size: 1.250em;
+     }
+     .slides-div > h3 {
+          font-size: 1.000em;
+     }
 }
 
-/* @media (min-width: 30em) and (orientation: landscape) { ... } */
-/* @media (min-height: 680px), screen and (orientation: portrait) { ... } */
