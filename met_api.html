@@ -5,21 +5,27 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Document</title>
+     <style>
+          /* .slides-divs {display:none;}
+          .display-left{position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+          .display-right{position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)} */
+          </style>
 </head>
 <body>
      <!-- The Modal -->
-<div id="id01" class="w3-modal">
-     <div class="w3-modal-content">
-          <div class="w3-container">
+     <!-- <h2>W3.CSS Modal</h2>
+     <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
+
+<div id="modal-slides" class="modal">
+     <div class="modal-content">
+          <div class="modal-container">
           <span onclick="document.getElementById('id01').style.display='none'"
-          class="w3-button w3-display-topright">&times;</span>
+          class="button-display-topright">&times;</span>
 
                     <div class="slides-content slides-display-container">
-                         
-                              
                
-                              <button class="w3-button w3-black w3-display-left">&#10094;</button>
-                              <button class="w3-button w3-black w3-display-right">&#10095;</button>
+                              <!-- <button class="display-left" onclick="plusDivs(-1)">&#10094;</button>
+                              <button class="display-right" onclick="plusDivs(+1)">&#10095;</button> -->
                     </div>
 
                </div>
