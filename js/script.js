@@ -86,7 +86,6 @@ function onReady () {
                $(this).on("click", {x:j}, function(event) {
                     storedEventData.push(event.data.x);
                     $(this).toggleClass('flip', true).promise.then
-                    alert(event.data.x + " event data")
                     x++;
                if (x >= 2) {
                     compareImages();
@@ -97,12 +96,8 @@ function onReady () {
           //because I'm going off event data, the conditionals are thrown off. The arrays depend on there being 18 items to match within the arrays that correspond to index-numbers throughout (associative).
           function compareImages() {
                setTimeout(function() {
-                         // let event1 = storedEventData[0];
-                         // let event2 = storedEventData[1];
                     if (($('#image-' + storedEventData[0]).attr('src')) === ($('#image-' + storedEventData[1]).attr('src'))) {
                          x = 0;
-                         alert(('#image-' + storedEventData[0]));
-                         alert(($('#image-' + storedEventData[0]).attr('src')));
                          storedEventData = [];  
                          matches++
                          if (matches === 9) {
@@ -112,13 +107,6 @@ function onReady () {
                     else {
                          $(('#flip-card-inner-' + storedEventData[0])).toggleClass('flip', false);
                          $(('#flip-card-inner-' + storedEventData[1])).toggleClass('flip', false);
-                         // alert(( imagesContainer[event1] + " first image container"))
-                         // alert(( imagesContainer[event2] + " second image container"))
-                         alert(('#flip-card-inner-' + storedEventData[0]))
-                         alert(('#flip-card-inner-' + storedEventData[1]))
-                         // alert($( imagesContainer[event1]).attr('src'));
-                         // alert($( imagesContainer[event2]).attr('src'));
-                         // alert ((($( imagesContainer[event1]).attr('src')) === $( imagesContainer[event2]).attr('src')));
                          storedEventData = []; 
                          x = 0;
                     } 
