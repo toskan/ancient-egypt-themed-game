@@ -81,7 +81,7 @@ header {
 } 
 .container {
      height: 100vh;
-     background: url(../images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg) no-repeat center center fixed;
+     /* background: url(../images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg) no-repeat center center fixed; */
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover; 
@@ -328,6 +328,10 @@ header {
      .win-li {
           padding: 10px;
           font-size: 1.250em;
+     }
+     .eleven-images {
+          width: 90%;
+          height: auto;
      }
 }
 @media screen and (max-width: 1024px)  and (orientation: landscape) {

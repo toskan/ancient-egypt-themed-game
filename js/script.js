@@ -68,7 +68,7 @@ function onReady () {
                if (document.readyState === "complete") { 
                     $('#header-play-div').hide();
                     $('.container').show();
-                    $('body').css('background-image', 'none'); 
+                    $('body').css({'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'}); 
                     for (let i = 0; i < imagesContainer.length; i++) {
                          $(imagesContainer[i]).attr('src', imageArray[i]);
                     }
@@ -85,7 +85,7 @@ function onReady () {
           $('.flip-card-inner').each(function(j){
                $(this).on("click", {x:j}, function(event) {
                     storedEventData.push(event.data.x);
-                    $(this).toggleClass('flip', true).promise.then
+                    $(this).toggleClass('flip', true);
                     x++;
                if (x >= 2) {
                     compareImages();
@@ -97,6 +97,8 @@ function onReady () {
           function compareImages() {
                setTimeout(function() {
                     if (($('#image-' + storedEventData[0]).attr('src')) === ($('#image-' + storedEventData[1]).attr('src'))) {
+                         $(innerCard[storedEventData[0]]).off();
+                         $(innerCard[storedEventData[1]]).off();
                          x = 0;
                          storedEventData = [];  
                          matches++
@@ -263,7 +265,7 @@ function onReady () {
           if (document.readyState === "complete") { 
                $('#header-play-div').hide();
                $('.container').show();
-               $('body').css('background-image', 'none'); 
+               $('body').css({'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
                for (let i = 0; i < imagesContainer.length; i++) {
                     $(imagesContainer[i]).attr('src', imageArray[i]);
                }
@@ -280,8 +282,8 @@ function onReady () {
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
                storedEventData.push(event.data.x);
-               $(this).toggleClass('flip', true).promise.then 
-               // $(innerCard[storedEventData[0]]).off(event);
+               $(this).toggleClass('flip', true).promise.then
+               alert(this)
                x++;
           if (x >= 2) {
                compareImages();
@@ -292,10 +294,11 @@ function onReady () {
      function compareImages() {
           setTimeout(function() {
                if (imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])) {
+                    $(innerCard[storedEventData[0]]).off();
+                    $(innerCard[storedEventData[1]]).off();
                     x = 0;
                     storedEventData = [];
-                    matches++
-                    alert(matches)
+                    matches++;  
                     if (matches === 9) {
                          $('#win-restart').css("display", "block");
                     }  
@@ -337,60 +340,60 @@ function onReady () {
 
      let imageObjectIDS = [551302, 546748, 544222, 543870, 547803, 551502, 549070, 548580, 544864, 570708, 546745]
 
-let apiURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
+     let apiURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
 
-let urls = [];
-let count = 0;
+     let urls = [];
+     let count = 0;
 
-imageObjectIDS.forEach(function(i, j){
-     urls[j] = apiURL + i;
-});
-console.log(urls)
+     imageObjectIDS.forEach(function(i, j){
+          urls[j] = apiURL + i;
+     });
+     console.log(urls)
 
-Promise.all(urls.map(url =>
-     fetch(url)
-     .then(convertToJson)
-     .then(useData)
-)) 
-
-     function convertToJson(response) {
-          //this returns the info so it can be worked with
-          return response.json();
-     }
-     let elevenImages = [];
-     let objectName = [];
-     let objectCountry = []
-     let objectDate = [];
-     let objectMedium = [];
-     let objectURL = [];
-     function useData (jsonData) {
-          console.log(jsonData)
-          elevenImages[elevenImages.length] = jsonData.primaryImageSmall;
-          objectName[objectName.length] = jsonData.objectName;
-          objectCountry[objectCountry.length] = jsonData.country;
-          objectMedium[objectMedium.length] = jsonData.medium;
-          objectDate[objectDate.length] = jsonData.objectDate;
-          objectURL[objectURL.length] = jsonData.objectURL;
-          $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '<h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-country">' + objectCountry[count] + '</h3><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count]  + '>More info at the Metropolitan Museum</a></li></ul></div>');
-          count++;
-          $('.met-link-a').attr('target', '_blank');
-     }
-
-     function addToSearch(dataItems) {
-          fetch(dataItems)
+     Promise.all(urls.map(url =>
+          fetch(url)
           .then(convertToJson)
-          .then(applyData);
-     }
+          .then(useData)
+     )) 
 
-     function applyData(dataJson) {
-          console.log(dataJson);
-     }
+          function convertToJson(response) {
+               //this returns the info so it can be worked with
+               return response.json();
+          }
+          let elevenImages = [];
+          let objectName = [];
+          let objectCountry = []
+          let objectDate = [];
+          let objectMedium = [];
+          let objectURL = [];
+          function useData (jsonData) {
+               console.log(jsonData)
+               elevenImages[elevenImages.length] = jsonData.primaryImageSmall;
+               objectName[objectName.length] = jsonData.objectName;
+               objectCountry[objectCountry.length] = jsonData.country;
+               objectMedium[objectMedium.length] = jsonData.medium;
+               objectDate[objectDate.length] = jsonData.objectDate;
+               objectURL[objectURL.length] = jsonData.objectURL;
+               $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '<h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-country">' + objectCountry[count] + '</h3><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count]  + '>More info at the Metropolitan Museum</a></li></ul></div>');
+               count++;
+               $('.met-link-a').attr('target', '_blank');
+          }
 
-     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-     if (isChrome) {
-          $('.flip-card-bottom, .flip-card-top').css({'backface-visibility': 'visible', ' -webkit-backface-visibility': 'visible'});
+          function addToSearch(dataItems) {
+               fetch(dataItems)
+               .then(convertToJson)
+               .then(applyData);
+          }
+
+          function applyData(dataJson) {
+               console.log(dataJson);
+          }
+
+          var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+          if (isChrome) {
+               $('.flip-card-bottom, .flip-card-top').css({'backface-visibility': 'visible', ' -webkit-backface-visibility': 'visible'});
+          }
      }
-}
 }
 $('document').ready(onReady);
 
