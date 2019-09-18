@@ -87,38 +87,41 @@ function onReady () {
                     storedEventData.push(event.data.x);
                     $(this).toggleClass('flip', true).promise.then
                     alert(event.data.x + " event data")
-                    // $(innerCard[storedEventData[0]]).off(event);
                     x++;
                if (x >= 2) {
                     compareImages();
                     }
                });
           });
-          //because I'm going off event data, the conditionals are thrown off. The arrays depend on there being 18 items to match within the array.
+
+          //because I'm going off event data, the conditionals are thrown off. The arrays depend on there being 18 items to match within the arrays that correspond to index-numbers throughout (associative).
           function compareImages() {
                setTimeout(function() {
-                         let event1 = storedEventData[0];
-                         let event2 = storedEventData[1];
-                         let innerCard1 = "#flip-card-inner-" + event1;
-                         let innerCard2 =  "#flip-card-inner-" + event2;
-                    if (imageArray[storedEventData[0]] === (imageArray[storedEventData[1]])) {
+                         // let event1 = storedEventData[0];
+                         // let event2 = storedEventData[1];
+                    if (($('#image-' + storedEventData[0]).attr('src')) === ($('#image-' + storedEventData[1]).attr('src'))) {
                          x = 0;
-                         alert((imageArray[storedEventData[0]]) + " imageArray [storedEventData[0]")
-                         alert((imageArray[storedEventData[1]]) + " imageArray [storedEventData[1]")
-                         storedEventData = [];
+                         alert(('#image-' + storedEventData[0]));
+                         alert(($('#image-' + storedEventData[0]).attr('src')));
+                         storedEventData = [];  
                          matches++
                          if (matches === 9) {
                               $('#win-restart').css("display", "block");
                          }  
                     }
                     else {
-                         $(innerCard1).toggleClass('flip', false);
-                         $(innerCard2).toggleClass('flip', false);
-                         alert((imageArray[storedEventData[0]]) + " imageArray [storedEventData[0]")
-                         alert((imageArray[storedEventData[1]]) + " imageArray [storedEventData[1]")
-                         storedEventData = [];
+                         $(('#flip-card-inner-' + storedEventData[0])).toggleClass('flip', false);
+                         $(('#flip-card-inner-' + storedEventData[1])).toggleClass('flip', false);
+                         // alert(( imagesContainer[event1] + " first image container"))
+                         // alert(( imagesContainer[event2] + " second image container"))
+                         alert(('#flip-card-inner-' + storedEventData[0]))
+                         alert(('#flip-card-inner-' + storedEventData[1]))
+                         // alert($( imagesContainer[event1]).attr('src'));
+                         // alert($( imagesContainer[event2]).attr('src'));
+                         // alert ((($( imagesContainer[event1]).attr('src')) === $( imagesContainer[event2]).attr('src')));
+                         storedEventData = []; 
                          x = 0;
-                    }    
+                    } 
                }, 2500);
           }
           
