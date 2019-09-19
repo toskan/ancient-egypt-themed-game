@@ -336,7 +336,7 @@ function onReady () {
                     x = 0;
                     storedEventData = [];
                     matches++;  
-                    if (matches === 1) {
+                    if (matches === 9) {
                          $('#win-restart').css("display", "block");
                     }  
                }
