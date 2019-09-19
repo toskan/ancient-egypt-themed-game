@@ -296,6 +296,7 @@ header {
      left: 0%;
      transform: translate(0%,-50%);
      -ms-transform:translate(-0%,-50%);
+     -webkit-transform: translate(0%,-50%);
      font-size: 1.700em;
      background-color: lightgrey;
      -webkit-tap-highlight-color: transparent;
@@ -310,6 +311,7 @@ header {
      right: 0%;
      transform: translate(0%,-50%);
      -ms-transform: translate(0%,-50%);
+     -webkit-transform: translate(0%,-50%);
      font-size: 1.700em;
      background-color: lightgrey;
      -webkit-tap-highlight-color: transparent;
