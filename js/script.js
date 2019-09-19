@@ -87,6 +87,10 @@ function onReady () {
                     storedEventData.push(event.data.x);
                     $(this).toggleClass('flip', true);
                     x++;
+               if  (storedEventData[0] === storedEventData[1]) {
+                    storedEventData.splice(1, 1);
+                    x--;
+               }
                if (x >= 2) {
                     compareImages();
                     }
@@ -281,10 +285,13 @@ function onReady () {
 
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
-               storedEventData.push(event.data.x);
-               $(this).toggleClass('flip', true).promise.then
-               alert(this)
+               $(this).toggleClass('flip', true).promise.then;
+               storedEventData.push(event.data.x); 
                x++;
+          if  (storedEventData[0] === storedEventData[1]) {
+               storedEventData.splice(1, 1);
+               x--;
+          }
           if (x >= 2) {
                compareImages();
                }
@@ -305,7 +312,7 @@ function onReady () {
                }
                else {
                     $(innerCard[storedEventData[0]]).toggleClass('flip', false);
-                    $(innerCard[storedEventData[1]]).toggleClass('flip', false);
+                    $(innerCard[storedEventData[1]]).toggleClass('flip', false); 
                     storedEventData = [];
                     x = 0;
                }    
