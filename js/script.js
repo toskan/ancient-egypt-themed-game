@@ -75,7 +75,7 @@ function onReady () {
                          $(imagesContainer[i]).attr('src', imageArray[i]);
                     }
                }
-               if (document.readyState != 'complete') {
+               if (document.readyState !== 'complete') {
                          $('.container, .loader-container').show();
                          $('#header-play-div, #row1, #row2, #row3').hide(); 
                     }
@@ -300,7 +300,7 @@ function onReady () {
      });
 
      $('#play').click(startPlay);
-     function startPlay() { 
+     function startPlay() {
           if (document.readyState === "complete") { 
                $('#header-play-div').hide();
                $('.container').show();
@@ -309,11 +309,11 @@ function onReady () {
                     $(imagesContainer[i]).attr('src', imageArray[i]);
                }
           }
-          if (document.readyState !== "complete") {
+          if (document.readyState === "interactive") {
                     $('.container, .loader-container').show();
                     $('#header-play-div, #row1, #row2, #row3').hide(); 
                }
-     }
+          }
 
      let storedEventData = []
      let x = 0;
