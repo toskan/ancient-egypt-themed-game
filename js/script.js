@@ -66,18 +66,12 @@ function onReady () {
           });
 
           $('#play').click(startPlay);
-          function startPlay() { 
-               if (document.readyState === 'complete') { 
+          function startPlay() {  
                     $('#header-play-div').hide();
                     $('.container').show();
                     $('body').css({'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'}); 
                     for (let i = 0; i < imagesContainer.length; i++) {
                          $(imagesContainer[i]).attr('src', imageArray[i]);
-                    }
-               }
-               if (document.readyState !== 'complete') {
-                         $('.container, .loader-container').show();
-                         $('#header-play-div, #row1, #row2, #row3').hide(); 
                     }
           }
 
@@ -138,7 +132,7 @@ function onReady () {
 
           $('#play-again').click(playAgain);
           function playAgain() {
-               $('#win-restart').css("display", "none");
+               $('#win-restart').css('display", "none');
                location.reload();
           }
 
@@ -146,32 +140,11 @@ function onReady () {
      function artInfo() {
           $('#win-restart').css('display', 'none');
           $('#modal-slides').css('display', 'block');
-          var slideIndex = 1;
-     showDivs(slideIndex);
-     function plusDivs(n) {
-          showDivs(slideIndex += n);
-     }
-     $('.display-left').click(subtractOne);
-     function subtractOne() {
-          plusDivs(-1);
-     }
-     $('.display-right').click(addOne);
-     function addOne() {
-          plusDivs(1);
-     }
-     function showDivs(n) {
-     let x = $('.slides-div');
-     if (n > x.length) {
-          slideIndex = 1;
-     }
-     if (n < 1) {
-          slideIndex = x.length;
-     };
-     for (let i = 0; i < x.length; i++) {
-     $(x[i]).css('display', 'none');
-     }
-     $(x[slideIndex-1]).css('display', 'contents');
-     }
+          $('.display-right, .display-left').hide();
+          $('.slides-div').show();
+          $('.modal-content').css('background-color', 'transparent');
+          $('#row1, #row2, #row3').hide();
+
      }
 
           $('.button-display-topright').click(closeArtModal);
@@ -301,17 +274,11 @@ function onReady () {
 
      $('#play').click(startPlay);
      function startPlay() {
-          if (document.readyState === "complete") { 
                $('#header-play-div').hide();
                $('.container').show();
                $('body').css({'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
                for (let i = 0; i < imagesContainer.length; i++) {
                     $(imagesContainer[i]).attr('src', imageArray[i]);
-               }
-          }
-          if (document.readyState === "interactive") {
-                    $('.container, .loader-container').show();
-                    $('#header-play-div, #row1, #row2, #row3').hide(); 
                }
           }
 
