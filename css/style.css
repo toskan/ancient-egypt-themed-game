@@ -130,7 +130,8 @@ header {
      -webkit-transition: 1.25s ease-in;
      -moz-transition: 1.25s ease-in;
      -ms-transition: 1.25s ease-in;
-     -o-transition: 1.25s ease-in; 
+     -o-transition: 1.25s ease-in;
+     -webkit-tap-highlight-color: transparent; 
      /* transform-style preserve 3d messes up in microsoft edge */
 }
 /* Position of top and bottom */
@@ -243,7 +244,6 @@ header {
 }
 .modal {
      z-index: 3;
-     padding-top: 45px;
      position: fixed;
      left: 0;
      top: 0;
@@ -256,9 +256,10 @@ header {
      margin: auto;
      background-color: lightgrey;
      position: relative;
-     padding: 25px;
+     padding: 10px 0 0 28px;
      outline: 0;
      width: 650px;
+     height: 920px;
      color: black;
 }
 .button-display-topright {
@@ -268,12 +269,9 @@ header {
      font-size: 2.000em;
      margin-left: 8px;
 }
-.slides-div {
-     padding: 20px 0 0 15px;
-}
 .met-link-ul {
      list-style: none;
-     margin-left: -40px;
+     margin-left: -25px;
 }
 .met-link-a {
      text-decoration: none;
@@ -283,29 +281,42 @@ header {
 .met-link-a:hover {
      color: darkgrey;
 }
-     /* .display-left {
-          position: absolute;
-          top: 50%;
-          left: 0%;
-          transform: translate(0%,-50%);
-          -ms-transform:translate(-0%,-50%)
-     }
-     .display-right {
-          position: absolute;
-          top: 50%;
-          right: 0%;
-          transform: translate(0%,-50%);
-          -ms-transform: translate(0%,-50%)} */
-
-/* Safari */
-@-webkit-keyframes spin {
-     0% { -webkit-transform: rotate(0deg); }
-     100% { -webkit-transform: rotate(360deg); }
+.slides-div {
+     display: none;
 }
-
-@keyframes spin {
-     0% { transform: rotate(0deg); }
-     100% { transform: rotate(360deg); }
+.slides-div > h2 {
+     margin-left: 15px;
+}
+.slides-div > h3 {
+     margin-left: 15px;
+}
+.display-left {
+     position: absolute;
+     top: 50%;
+     left: 0%;
+     transform: translate(0%,-50%);
+     -ms-transform:translate(-0%,-50%);
+     font-size: 1.700em;
+     background-color: lightgrey;
+     -webkit-tap-highlight-color: transparent;
+     outline: none;
+     padding: 0;
+     border: none;
+     margin-left: 5px;
+}
+.display-right {
+     position: absolute;
+     top: 50%;
+     right: 0%;
+     transform: translate(0%,-50%);
+     -ms-transform: translate(0%,-50%);
+     font-size: 1.700em;
+     background-color: lightgrey;
+     -webkit-tap-highlight-color: transparent;
+     outline: none;
+     padding: 0;
+     border: none;
+     margin-right: 5px;
 }
 
 /* tablets */
@@ -325,13 +336,42 @@ header {
           margin-left: 40px;
           font-size: 1.500em;
      }
+     .button-display-topright {
+          font-size: 2.800em;
+          margin-left: 8px;
+     }
      .win-li {
           padding: 10px;
           font-size: 1.250em;
      }
      .eleven-images {
-          width: 90%;
+          width: 70%;
           height: auto;
+     }
+     .modal-content {
+          width: 95%;
+          height: 1500px;
+          padding: 10px 0 0 28px;
+     }
+     .button-display-topright {
+          padding-left: 3px;
+     }
+     .slides-div > h2 {
+          font-size: 1.800em;
+     }
+     .slides-div > h3 {
+          font-size: 1.300em;
+     }
+     .met-link-li {
+          font-size: 1.300em;
+     }
+     .display-left {
+          font-size: 2.000em;
+          margin-left: 5px;
+     }
+     .display-right {
+          font-size: 2.000em;
+          margin-right: 5px;
      }
 }
 @media screen and (max-width: 1024px)  and (orientation: landscape) {
@@ -357,22 +397,31 @@ header {
      .modal-content {
           padding: 15px;
           width: 50%;
+          height: 720px;
      }
      .eleven-images {
           width: auto;
-          height: 350px;
+          height: 295px;
      }
      .button-display-topright {
           margin-left: 5px;
      }
-     .slides-div {
-          padding: 10px 0 0 4px;
-     }
      .slides-div > h2 {
-          font-size: 1.250em;
+          font-size: 1.800em;
      }
      .slides-div > h3 {
-          font-size: 1.000em;
+          font-size: 1.300em;
+     }
+     .met-link-li {
+          font-size: 1.300em;
+     }
+     .display-left {
+          font-size: 2.000em;
+          margin-left: 5px;
+     }
+     .display-right {
+          font-size: 2.000em;
+          margin-right: 5px;
      }
 }
 
@@ -412,22 +461,17 @@ header {
           padding: 10px;
           font-size: 1.000em;
      }
-     .modal {
-          padding-top: 10px;
-     }
      .modal-content {
-          padding: 25px;
           width: 95%;
+          height: 770px;
+          padding: 15px 0 0 18px;
      }
      .eleven-images {
           width: 90%;
           height: auto;
      }
      .button-display-topright {
-          margin-left: 5px;
-     }
-     .slides-div {
-          padding: 5px 0 0 4px;
+          margin-left: 0;
      }
      .slides-div > h2 {
           font-size: 1.250em;
@@ -479,15 +523,19 @@ header {
           font-size: 1.250em;
      }
      .modal {
-          padding-top: 10px;
+          padding-top: 0;
      }
      .modal-content {
-          padding: 15px;
-          width: 75%;
+          padding: 10px 0 0 28px;
+          width: 45%;
+          height: 550px;
+     }
+     .modal-slides {
+          padding-top: 0;
      }
      .eleven-images {
-          width: auto;
-          height: 280px;
+          width: 60%;
+          height: auto;
      }
      .button-display-topright {
           margin-left: 5px;

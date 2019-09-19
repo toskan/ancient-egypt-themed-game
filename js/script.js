@@ -82,6 +82,7 @@ function onReady () {
           let storedEventData = []
           let x = 0;
 
+          setTimeout(function() {
           $('.flip-card-inner').each(function(j){
                $(this).on("click", {x:j}, function(event) {
                     storedEventData.push(event.data.x);
@@ -96,6 +97,7 @@ function onReady () {
                     }
                });
           });
+          }, 1700); 
 
           //because I'm going off event data, the conditionals are thrown off. The arrays depend on there being 18 items to match within the arrays that correspond to index-numbers throughout (associative).
           function compareImages() {
@@ -134,10 +136,36 @@ function onReady () {
           }
 
           $('#art-info').click(artInfo);
-          function artInfo() {
-               $('#win-restart').css("display", "none");
-               $('#modal-slides').css("display", "block");
-          }
+     function artInfo() {
+          $('#win-restart').css('display', 'none');
+          $('#modal-slides').css('display', 'block');
+          var slideIndex = 1;
+     showDivs(slideIndex);
+     function plusDivs(n) {
+          showDivs(slideIndex += n);
+     }
+     $('.display-left').click(subtractOne);
+     function subtractOne() {
+          plusDivs(-1);
+     }
+     $('.display-right').click(addOne);
+     function addOne() {
+          plusDivs(1);
+     }
+     function showDivs(n) {
+     let x = $('.slides-div');
+     if (n > x.length) {
+          slideIndex = 1;
+     }
+     if (n < 1) {
+          slideIndex = x.length;
+     };
+     for (let i = 0; i < x.length; i++) {
+     $(x[i]).css('display', 'none');
+     }
+     $(x[slideIndex-1]).css('display', 'contents');
+     }
+     }
 
           $('.button-display-topright').click(closeArtModal);
           function closeArtModal() {
@@ -283,9 +311,10 @@ function onReady () {
      let storedEventData = []
      let x = 0;
 
+     setTimeout(function() {
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
-               $(this).toggleClass('flip', true).promise.then;
+               $(this).toggleClass('flip', true);
                storedEventData.push(event.data.x); 
                x++;
           if  (storedEventData[0] === storedEventData[1]) {
@@ -297,6 +326,7 @@ function onReady () {
                }
           });
      });
+}, 1700);
      
      function compareImages() {
           setTimeout(function() {
@@ -306,7 +336,7 @@ function onReady () {
                     x = 0;
                     storedEventData = [];
                     matches++;  
-                    if (matches === 9) {
+                    if (matches === 1) {
                          $('#win-restart').css("display", "block");
                     }  
                }
@@ -319,7 +349,7 @@ function onReady () {
           }, 2500);
      }
      
-     console.log(storedEventData)
+     console.log(storedEventData);
 
      $('.button-win-restart-topright').click(closeModal);
      function closeModal() {
@@ -335,8 +365,34 @@ function onReady () {
 
      $('#art-info').click(artInfo);
      function artInfo() {
-          $('#win-restart').css("display", "none");
-          $('#modal-slides').css("display", "block");
+          $('#win-restart').css('display', 'none');
+          $('#modal-slides').css('display', 'block');
+          var slideIndex = 1;
+     showDivs(slideIndex);
+     function plusDivs(n) {
+          showDivs(slideIndex += n);
+     }
+     $('.display-left').click(subtractOne);
+     function subtractOne() {
+          plusDivs(-1);
+     }
+     $('.display-right').click(addOne);
+     function addOne() {
+          plusDivs(1);
+     }
+     function showDivs(n) {
+     let x = $('.slides-div');
+     if (n > x.length) {
+          slideIndex = 1;
+     }
+     if (n < 1) {
+          slideIndex = x.length;
+     };
+     for (let i = 0; i < x.length; i++) {
+     $(x[i]).css('display', 'none');
+     }
+     $(x[slideIndex-1]).css('display', 'contents');
+     }
      }
 
      $('.button-display-topright').click(closeArtModal);
