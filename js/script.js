@@ -1,3 +1,5 @@
+let iCanRun = true;
+
 function onReady () {
      console.log(document.readyState);
      //NOT SURE THIS WORKS
@@ -65,7 +67,7 @@ function onReady () {
 
           $('#play').click(startPlay);
           function startPlay() { 
-               if (document.readyState === "complete") { 
+               if (document.readyState === 'complete') { 
                     $('#header-play-div').hide();
                     $('.container').show();
                     $('body').css({'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'}); 
@@ -73,7 +75,7 @@ function onReady () {
                          $(imagesContainer[i]).attr('src', imageArray[i]);
                     }
                }
-               if (document.readyState !== "complete") {
+               if (document.readyState != 'complete') {
                          $('.container, .loader-container').show();
                          $('#header-play-div, #row1, #row2, #row3').hide(); 
                     }
@@ -82,9 +84,9 @@ function onReady () {
           let storedEventData = []
           let x = 0;
 
-          setTimeout(function() {
           $('.flip-card-inner').each(function(j){
                $(this).on("click", {x:j}, function(event) {
+                    if (iCanRun) {
                     storedEventData.push(event.data.x);
                     $(this).toggleClass('flip', true);
                     x++;
@@ -95,16 +97,21 @@ function onReady () {
                if (x >= 2) {
                     compareImages();
                     }
+                    iCanRun = false;
+                    setTimeout(function(){
+                         iCanRun = true;
+                    }, 1100);
+               }
                });
           });
-          }, 1700); 
+          
 
           //because I'm going off event data, the conditionals are thrown off. The arrays depend on there being 18 items to match within the arrays that correspond to index-numbers throughout (associative).
           function compareImages() {
                setTimeout(function() {
                     if (($('#image-' + storedEventData[0]).attr('src')) === ($('#image-' + storedEventData[1]).attr('src'))) {
-                         $(innerCard[storedEventData[0]]).off();
-                         $(innerCard[storedEventData[1]]).off();
+                         $(('#flip-card-inner-' + storedEventData[0])).off();
+                         $(('#flip-card-inner-' + storedEventData[1])).off();
                          x = 0;
                          storedEventData = [];  
                          matches++
@@ -118,7 +125,7 @@ function onReady () {
                          storedEventData = []; 
                          x = 0;
                     } 
-               }, 2500);
+               }, 1300);
           }
           
           console.log(storedEventData)
@@ -135,7 +142,7 @@ function onReady () {
                location.reload();
           }
 
-          $('#art-info').click(artInfo);
+     $('#art-info').click(artInfo);
      function artInfo() {
           $('#win-restart').css('display', 'none');
           $('#modal-slides').css('display', 'block');
@@ -311,22 +318,29 @@ function onReady () {
      let storedEventData = []
      let x = 0;
 
-     setTimeout(function() {
+
+
      $('.flip-card-inner').each(function(j){
           $(this).on("click", {x:j}, function(event) {
-               $(this).toggleClass('flip', true);
-               storedEventData.push(event.data.x); 
-               x++;
-          if  (storedEventData[0] === storedEventData[1]) {
-               storedEventData.splice(1, 1);
-               x--;
-          }
-          if (x >= 2) {
-               compareImages();
+               if (iCanRun) {
+                    $(this).toggleClass('flip', true);
+                    storedEventData.push(event.data.x); 
+                    x++;
+                    if  (storedEventData[0] === storedEventData[1]) {
+                         storedEventData.splice(1, 1);
+                         x--;
+                    }
+                    if (x >= 2) {
+                         compareImages();
+                    }
+                    iCanRun = false;
+                    setTimeout(function(){
+                         iCanRun = true;
+                    }, 1100);
                }
           });
      });
-}, 1700);
+
      
      function compareImages() {
           setTimeout(function() {
@@ -346,7 +360,7 @@ function onReady () {
                     storedEventData = [];
                     x = 0;
                }    
-          }, 2500);
+          }, 1300);
      }
      
      console.log(storedEventData);

@@ -126,11 +126,11 @@ header {
      height: 100%;
      -webkit-transform-style: preserve-3d;  
      transform-style: preserve-3d;
-     transition: 1.25s ease-in;
-     -webkit-transition: 1.25s ease-in;
-     -moz-transition: 1.25s ease-in;
-     -ms-transition: 1.25s ease-in;
-     -o-transition: 1.25s ease-in;
+     transition: 0.9s ease-in;
+     -webkit-transition: 0.9s ease-in;
+     -moz-transition: 0.9s ease-in;
+     -ms-transition: 0.9s ease-in;
+     -o-transition: 0.9s ease-in;
      -webkit-tap-highlight-color: transparent; 
      /* transform-style preserve 3d messes up in microsoft edge */
 }
