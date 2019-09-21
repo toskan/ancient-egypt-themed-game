@@ -190,6 +190,7 @@ header {
      color: black;
 }
 .button-win-restart-topright {
+     cursor: pointer;
      position: absolute;
      left: 0;
      top: 0;
@@ -213,6 +214,7 @@ header {
      text-decoration: none;
      outline: none;
      color: black;
+     cursor: pointer;
 }
 .win-a:hover {
      color: darkgrey;
@@ -241,6 +243,7 @@ header {
      color: black;
 }
 .button-display-topright {
+     cursor: pointer;
      position: absolute;
      left: 0;
      top: 0;
@@ -269,6 +272,7 @@ header {
      margin-left: 15px;
 }
 .display-left {
+     cursor: pointer;
      position: absolute;
      top: 50%;
      left: 0%;
@@ -284,6 +288,7 @@ header {
      margin-left: 5px;
 }
 .display-right {
+     cursor: pointer;
      position: absolute;
      top: 50%;
      right: 0%;
