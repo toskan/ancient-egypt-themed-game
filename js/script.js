@@ -349,7 +349,7 @@ function compareImagesMobile() {
                innerCard[i] = i;
                innerCard[i] = '#flip-card-inner-' + innerCard[i];
           }
-
+          
           $('body').css('height', window.innerHeight);
 
           $(window).resize(function () {
