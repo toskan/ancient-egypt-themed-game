@@ -60,10 +60,17 @@ function artInfoMobile() {
      $('.slides-div').show();
      $('.modal-content').css('background-color', 'transparent');
      $('#row1, #row2, #row3').hide();
-     $('.slides-div').css({'margin-top': '45px'});
+     $('.slides-div').css({'margin-top': '10px'});
+     let slideContainerSize = $('.modal-slides').width();
+     let imageSize = $('.eleven-images').width();
+     let imageLeftMargin = (slideContainerSize - imageSize) / 2;
+     $('.eleven-images').css({
+          'margin-left': imageLeftMargin + 'px',
+          'margin-right': imageLeftMargin + 'px'
+     });
      $('.button-display-topright').css({
      'position': 'fixed',
-     'margin': '10px 0 0 10px',
+     'margin': '5px 0 0 5px',
      'font-size': '2.200em'
      });
 }
@@ -78,15 +85,29 @@ function artInfo() {
           $('.slides-div').show();
           $('.modal-content').css({'background-color': 'transparent'});
           $('.slides-div').css({'margin-top': '45px'});
+          let slideContainerSize = $('.slides-content').width();
+          let imageSize = $('.eleven-images').width();
+          let imageLeftMargin = (slideContainerSize - imageSize) / 2;
+          $('.eleven-images').css({
+               'margin-left': imageLeftMargin + 'px',
+               'margin-right': imageLeftMargin + 'px'
+          });
           $('.button-display-topright').css({
           'position': 'fixed',
-          'margin': '20px 0 0 25px',
-          'font-size': '2.200em'
+          'margin': '20px 0 0 10px',
+          'font-size': '2.500em'
           });
      }
      else {
           $('#win-restart').css('display', 'none');
           $('#modal-slides').css('display', 'block');
+          let slideContainerSize = $('.modal-container').width();
+          let imageSize = $('.eleven-images').width();
+          let imageLeftMargin = (slideContainerSize - imageSize) / 2;
+          $('.eleven-images').css({
+               'margin-left': imageLeftMargin + 'px',
+               'margin-right': imageLeftMargin + 'px'
+          });
           var slideIndex = 1;
           showDivs(slideIndex);
 
@@ -149,7 +170,7 @@ function useData(jsonData) {
      objectMedium[objectMedium.length] = jsonData.medium;
      objectDate[objectDate.length] = jsonData.objectDate;
      objectURL[objectURL.length] = jsonData.objectURL;
-     $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '<h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-country">' + objectCountry[count] + '</h3><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count] + '>More info at the Metropolitan Museum</a></li></ul></div>');
+     $('.slides-content').prepend('<div class="slides-div"><h2 class="object-name">' + objectName[count] + '</h2><img class="eleven-images" src=' + elevenImages[count] + '><h3 class="object-country">' + objectCountry[count] + '</h3><h3 class="object-date">' + objectDate[count] + '</h3><h3 class="object-medium">' + objectMedium[count] + '</h3><ul class="met-link-ul"><li class="met-link-li"><a class="met-link-a" href=' + objectURL[count] + '>More info at the Metropolitan Museum</a></li></ul></div>');
      count++;
      $('.met-link-a').attr('target', '_blank');
 }
@@ -198,7 +219,7 @@ function compareImagesMobile() {
           x = 0;
           storedEventData = [];
           matches++
-          if (matches === 6) {
+          if (matches === 1) {
                $('#win-restart').css("display", "block");
           }
           }
@@ -324,7 +345,7 @@ function compareImagesMobile() {
                     x = 0;
                     storedEventData = [];
                     matches++;
-                    if (matches === 9) {
+                    if (matches === 1) {
                          $('#win-restart').css("display", "block");
                     }
                     }

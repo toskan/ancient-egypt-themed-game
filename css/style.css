@@ -235,10 +235,10 @@ header {
      margin: auto;
      background-color: lightgrey;
      position: relative;
-     padding: 10px 0 0 28px;
+     padding: 10px 14px 0 14px;
      outline: 0;
      width: 650px;
-     height: 920px;
+     height: 1100px;
      color: black;
 }
 .button-display-topright {
@@ -266,6 +266,10 @@ header {
 }
 .slides-div > h2 {
      margin-left: 15px;
+}
+.eleven-images {
+     width: 450px;
+     height: auto;
 }
 .slides-div > h3 {
      margin-left: 15px;
@@ -335,7 +339,7 @@ header {
      .modal-content {
           width: 95%;
           height: 1500px;
-          padding: 10px 0 0 28px;
+          padding: 10px 14px 0 14px;
      }
      .button-display-topright {
           padding-left: 3px;
@@ -384,8 +388,8 @@ header {
           height: 720px;
      }
      .eleven-images {
-          width: auto;
-          height: 295px;
+          width: 300px;
+          height: auto;
      }
      .button-display-topright {
           margin-left: 5px;
@@ -447,7 +451,7 @@ header {
      }
      .modal-content {
           width: 95%;
-          padding: 15px 0 0 18px;
+          padding: 15px 9px 0 9px;
      }
      .eleven-images {
           width: 90%;
@@ -515,7 +519,7 @@ header {
           padding-top: 0;
      }
      .modal-content {
-          padding: 10px 0 0 28px;
+          padding: 10px 14px 0 14px;
           width: 65%;
      }
      .modal-slides {
