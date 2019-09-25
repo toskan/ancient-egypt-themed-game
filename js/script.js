@@ -17,6 +17,7 @@ let objectURL = [];
 let apiURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
 let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 let isMac = (navigator.userAgent.indexOf('Mac OS X') != -1);
+let isEdge = /Edge/.test(navigator.userAgent);
 
 //  The Fisher-Yates algorithm works by picking one random element for each original array element, and then excluding it from the next draw. Just like randomly picking from a deck of cards.
 //  This exclusion is done in a clever way (invented by Durstenfeld for use by computers) by swapping the picked element with the current element, and then picking the next random element from the remainder. For optimal efficiency, the loop runs backwards so that the random pick is simplified.
@@ -162,6 +163,12 @@ function chromeFix() {
      }
 }
 
+function edgeFix() {
+     if (isEdge) {
+          $('.flip-card-bottom').css('background-color', '#D3D3D3');
+     }
+}
+
 function onReady() {
 
      if ((((window.matchMedia('(max-width: 414px)').matches)) && ((window.matchMedia('(orientation: portrait)').matches))) || (((window.matchMedia('(max-width: 823px)').matches)) && ((window.matchMedia('(orientation: landscape)').matches)))) {
@@ -280,6 +287,8 @@ function compareImagesMobile() {
           ));
           
           chromeFix();
+
+          edgeFix();
 
      }
 
@@ -403,6 +412,8 @@ function compareImagesMobile() {
           ));
 
           chromeFix();
+
+          edgeFix();
 
      }
 }
