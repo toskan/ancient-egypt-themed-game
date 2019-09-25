@@ -219,7 +219,7 @@ function compareImagesMobile() {
           x = 0;
           storedEventData = [];
           matches++
-          if (matches === 1) {
+          if (matches === 6) {
                $('#win-restart').css("display", "block");
           }
           }
@@ -345,7 +345,7 @@ function compareImagesMobile() {
                     x = 0;
                     storedEventData = [];
                     matches++;
-                    if (matches === 1) {
+                    if (matches === 9) {
                          $('#win-restart').css("display", "block");
                     }
                     }
