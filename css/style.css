@@ -377,7 +377,7 @@ header {
      }
      .win-li {
           padding: 10px;
-          font-size: 1.250em;
+          font-size: 1.000em;
      }
      .modal {
           padding-top: 10px;
@@ -492,8 +492,8 @@ header {
           display: none;
           }
      .flip-card, .flip-card-bottom > img {
-     width: 70px;
-     height: 98px;
+     width: 65px;
+     height: 91px;
      }
      #row1{
           margin-top: 0px;
@@ -509,10 +509,11 @@ header {
      }
      .win-restart-content {
           padding: 10px;
-          width: 50%;
+          width: 284px;
+          height: auto;
      }
      #h2-win {
-          margin-left: 50px;
+          margin-left: 40px;
           font-size: 1.250em;
      }
      .modal {
