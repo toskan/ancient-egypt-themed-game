@@ -260,7 +260,6 @@ function compareImagesMobile() {
 
           $(window).resize(function () {
                $('body').css('height', window.innerHeight);
-               setTimeout(function () {   window.scrollTo(0, 1); }, 1000);
           });
 
           $('#play').click(startPlay);
