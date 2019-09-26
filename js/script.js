@@ -258,6 +258,8 @@ function compareImagesMobile() {
 
           $('body').css('height', window.innerHeight);
 
+          $('head').append('<meta name="viewport" content="minimal-ui">');
+
           $(window).resize(function () {
                $('body').css('height', window.innerHeight);
           });
