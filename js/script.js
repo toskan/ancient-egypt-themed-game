@@ -262,7 +262,9 @@ function compareImagesMobile() {
                $('body').css('height', window.innerHeight);
           });
 
-          window.scrollTo(0,1);
+          setTimeout(function () {   
+               window.scrollTo(0, 1); 
+          }, 1000);
 
           $('#play').click(startPlay);
 
