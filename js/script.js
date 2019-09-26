@@ -33,7 +33,7 @@ function startPlay() {
      $('.container').show();
      $('body').css({
           'background-color': '#b1a192',
-          'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg)',
+          'background': 'url(./images/lc-23_3_465_egdp029732_broken_up_pattern_crop.jpg) no-repeat center center fixed',
           '-webkit-background-size': 'cover',
           '-moz-background-size': 'cover',
           '-o-background-size': 'cover',
@@ -220,7 +220,7 @@ function compareImagesMobile() {
           x = 0;
           storedEventData = [];
           matches++
-          if (matches === 1) {
+          if (matches === 6) {
                $('#win-restart').css("display", "block");
           }
           }
@@ -346,7 +346,7 @@ function compareImagesMobile() {
                     x = 0;
                     storedEventData = [];
                     matches++;
-                    if (matches === 1) {
+                    if (matches === 9) {
                          $('#win-restart').css("display", "block");
                     }
                     }
