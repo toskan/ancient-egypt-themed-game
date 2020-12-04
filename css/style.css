@@ -451,9 +451,12 @@ header {
      .win-li {
           padding: 10px;
           font-size: 1.000em;
-          text-aling: center;
-           margin: 0;
+          
      }
+   #win-list {
+      text-aling: center;
+           margin: 0;
+   }
      .modal-content {
           width: 95%;
           padding: 15px 9px 0 9px;
