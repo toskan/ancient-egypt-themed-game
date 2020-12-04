@@ -445,10 +445,14 @@ header {
      #h2-win {
           margin-left: 40px;
           font-size: 1.250em;
+          text-align: center;
+          padding: 0;
      }
      .win-li {
           padding: 10px;
           font-size: 1.000em;
+          text-aling: center;
+           margin: 0;
      }
      .modal-content {
           width: 95%;
